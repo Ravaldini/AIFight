@@ -15,12 +15,7 @@ public class GameEngine : MonoBehaviour {
 
 		f1 = GameObject.Find ("Fighter1");
 		f2 = GameObject.Find ("Fighter2");
-
-        f1.GetComponent<Fighter>().LoadStyle("Style1.txt");
-        f1.GetComponent<Fighter>().FighterListing();
-
-        f2.GetComponent<Fighter>().LoadStyle("Style2.txt");
-        f2.GetComponent<Fighter>().FighterListing();
+     
     }
 	
 	// Update is called once per frame

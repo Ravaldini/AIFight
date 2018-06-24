@@ -4,34 +4,13 @@ style = Drunked crocodile
 moveName = stepforward
 movePredcessor = root
 moveWeight = 100
-distanceToEnemyMax = 2.7
-distanceToEnemyMin = 0.5
+distanceToEnemyMax = 7.0
+distanceToEnemyMin = 2.5
 enemyMove = any
 
 moveName = stepbackward
 movePredcessor = knockdown
 moveWeight = 100
-distanceToEnemyMax = 3.0
-distanceToEnemyMin = 0.5
-enemyMove = any
-
-moveName = block
-movePredcessor = root
-moveWeight = 100
-distanceToEnemyMax = 0.7
-distanceToEnemyMin = 0.5
-enemyMove = punch
-
-moveName = punch
-movePredcessor = root
-moveWeight = 100
-distanceToEnemyMax = 0.7
-distanceToEnemyMin = 0.3
-enemyMove = any
-
-moveName = kick
-movePredcessor = root
-moveWeight = 100
-distanceToEnemyMax = 1.0
-distanceToEnemyMin = 0.5
+distanceToEnemyMax = 8.0
+distanceToEnemyMin = 7.0
 enemyMove = any
