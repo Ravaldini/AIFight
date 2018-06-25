@@ -40,7 +40,7 @@ public class Fighter : MonoBehaviour {
         if (this.name == "Fighter2") LoadStyle("Style2.txt");
         
         anim = GetComponent<Animator>();
-        
+                
         StartCoroutine(MakeDecision());
 
 
@@ -135,13 +135,13 @@ public class Fighter : MonoBehaviour {
         while (true)
         {
 
-            MakeMove();
+            
 
             distanceToEnemy = Math.Abs(transform.position.x - enemy.transform.position.x);
             enemyMove = enemy.GetComponent<Fighter>().currentMove;
 
             int i = 0;
-            nextMove = "idle";
+            //nextMove = "idle";
 
             foreach (Move myMove in moves)
             {
@@ -163,34 +163,26 @@ public class Fighter : MonoBehaviour {
                 }                
 
                
-            }           
+            }
 
             /*Debug.Log(nick + " - distanceToEnemy - " + distanceToEnemy);
             Debug.Log(nick + " - enemyMove - " + enemyMove);
             Debug.Log(nick + " - nextMove - " + nextMove);*/
 
-            
 
-            yield return new WaitForSeconds(0.2f);
+            int k = 1;
+            k = (int)UnityEngine.Random.Range(0, 5 + 1);
+            if (k == 1) yield return new WaitForSeconds(0.2f);
+            if (k == 2) yield return new WaitForSeconds(0.3f);
+            if (k == 3) yield return new WaitForSeconds(0.2f);
+            if (k == 4) yield return new WaitForSeconds(0.3f);
+            if (k == 5) yield return new WaitForSeconds(0.4f);
         }
 
     }
 
     
-
-
-
-    public void MakeMove()
-    {
-        if (currentMove == "idle" && nextMove != "idle")
-        {
-            currentMove = nextMove;
-            if (currentMove == "stepforward") anim.SetInteger("MoveNumber", 1);
-            lastMove = currentMove;
-            nextMove = "idle";
-        }
-        
-    }
+    
 
 
 
@@ -201,7 +193,9 @@ public class Fighter : MonoBehaviour {
     {
 
         if (this.name == "Fighter1") speed = sp;
-        if (this.name == "Fighter2") speed = -sp;
+        if (this.name == "Fighter2") speed = sp*(-1);
+
+        
         //Debug.Log("set_speed: " + speed);
 
     }
@@ -209,10 +203,12 @@ public class Fighter : MonoBehaviour {
 
 
 
-    public void set_currentMove(string str)
+    public void go_to_idle()
     {
 
-        currentMove = str;        
+        currentMove = "idle";
+        anim.SetInteger("MoveNumber", 0);
+        speed = 0;
         //Debug.Log("set_currentMove: " + currentMove);
 
     }
@@ -222,12 +218,66 @@ public class Fighter : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float x = transform.position.x + speed;
-        float y = transform.position.y;
-        float z = transform.position.z;
         
-        transform.position = new Vector3(x, y, z);
-        //Debug.Log("FixedUpdate");
+
+        if (speed != 0)
+        {
+            float x = transform.position.x + speed;
+            float y = transform.position.y;
+            float z = transform.position.z;
+
+            transform.position = new Vector3(x, y, z);
+        }
+
+        distanceToEnemy = Math.Abs(transform.position.x - enemy.transform.position.x);
+        if (distanceToEnemy < 1.0f)
+        {
+
+            float x = transform.position.x;
+            float y = transform.position.y;
+            float z = transform.position.z;
+
+            if (this.name == "Fighter1") {
+                x = (enemy.transform.position.x - 1);
+            }
+
+            if (this.name == "Fighter2")
+            {
+                x = (enemy.transform.position.x + 1);
+            }           
+
+            transform.position = new Vector3(x, y, z);
+            
+        }
+
+        if (transform.position.x < -7)
+        {
+            float x = -7;
+            float y = transform.position.y;
+            float z = transform.position.z;
+
+            transform.position = new Vector3(x, y, z);
+        }
+
+        if (transform.position.x > 7)
+        {
+            float x = 7;
+            float y = transform.position.y;
+            float z = transform.position.z;
+
+            transform.position = new Vector3(x, y, z);
+        }
+        
+
+
+        if (currentMove == "idle" && nextMove != "idle")
+        {
+            currentMove = nextMove;
+            if (currentMove == "stepforward") anim.SetInteger("MoveNumber", 1);
+            if (currentMove == "stepback") anim.SetInteger("MoveNumber", 2);
+            lastMove = currentMove;
+            nextMove = "idle";
+        }
 
     }
 

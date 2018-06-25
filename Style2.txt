@@ -4,34 +4,13 @@ style = Little Racoon
 moveName = stepforward
 movePredcessor = root
 moveWeight = 100
-distanceToEnemyMax = 2.7
-distanceToEnemyMin = 0.5
+distanceToEnemyMax = 15.0
+distanceToEnemyMin = 2.0
 enemyMove = any
 
-moveName = stepbackward
+moveName = stepback
 movePredcessor = knockdown
 moveWeight = 100
-distanceToEnemyMax = 3.0
-distanceToEnemyMin = 0.5
-enemyMove = any
-
-moveName = block
-movePredcessor = root
-moveWeight = 100
-distanceToEnemyMax = 0.7
-distanceToEnemyMin = 0.5
-enemyMove = punch
-
-moveName = punch
-movePredcessor = root
-moveWeight = 100
-distanceToEnemyMax = 0.7
-distanceToEnemyMin = 0.3
-enemyMove = any
-
-moveName = kick
-movePredcessor = root
-moveWeight = 100
-distanceToEnemyMax = 1.0
-distanceToEnemyMin = 0.5
+distanceToEnemyMax = 2.0
+distanceToEnemyMin = 0.0
 enemyMove = any
