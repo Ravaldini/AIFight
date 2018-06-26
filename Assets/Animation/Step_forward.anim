@@ -99,25 +99,32 @@ AnimationClip:
     functionName: set_speed
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.02
+    floatParameter: 0.03
     intParameter: 0
     messageOptions: 0
   - time: 0.5
     functionName: set_speed
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.03
+    floatParameter: 0.01
     intParameter: 0
     messageOptions: 0
   - time: 0.6666667
     functionName: set_speed
     data: 
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.01
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8333333
+    functionName: go_to_idle
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
-    functionName: go_to_idle
+  - time: 0.8333333
+    functionName: set_speed
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

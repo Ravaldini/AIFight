@@ -14,3 +14,10 @@ moveWeight = 100
 distanceToEnemyMax = 2.0
 distanceToEnemyMin = 0.0
 enemyMove = any
+
+moveName = punch
+movePredcessor = root
+moveWeight = 100
+distanceToEnemyMax = 1.9
+distanceToEnemyMin = 1.0
+enemyMove = any

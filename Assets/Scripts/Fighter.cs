@@ -43,6 +43,7 @@ public class Fighter : MonoBehaviour {
                 
         StartCoroutine(MakeDecision());
 
+        //FighterListing();
 
     }
 
@@ -140,8 +141,7 @@ public class Fighter : MonoBehaviour {
             distanceToEnemy = Math.Abs(transform.position.x - enemy.transform.position.x);
             enemyMove = enemy.GetComponent<Fighter>().currentMove;
 
-            int i = 0;
-            //nextMove = "idle";
+            int i = 0;            
 
             foreach (Move myMove in moves)
             {
@@ -150,16 +150,18 @@ public class Fighter : MonoBehaviour {
                 if (distanceToEnemy < myMove.distanceToEnemyMin) myMove.canUseNow = false;
                 //if (enemyMove != myMove.enemyMove) myMove.canUseNow = false;
                 if (myMove.canUseNow) i++;
+                //if (myMove.canUseNow) Debug.Log("myMove.canUseNow = " + myMove.canUseNow + "i = " + i);
             }
 
             if (i > 0)
             {
                 int j = (int)UnityEngine.Random.Range(0, i+1);
 
+                i = 1;
                 foreach (Move myMove in moves)
                 {
                     if (i == j) nextMove = myMove.moveName;
-                    if (myMove.canUseNow) i++;
+                    if (myMove.canUseNow) i++;                    
                 }                
 
                
@@ -174,9 +176,9 @@ public class Fighter : MonoBehaviour {
             k = (int)UnityEngine.Random.Range(0, 5 + 1);
             if (k == 1) yield return new WaitForSeconds(0.2f);
             if (k == 2) yield return new WaitForSeconds(0.3f);
-            if (k == 3) yield return new WaitForSeconds(0.2f);
-            if (k == 4) yield return new WaitForSeconds(0.3f);
-            if (k == 5) yield return new WaitForSeconds(0.4f);
+            if (k == 3) yield return new WaitForSeconds(0.3f);
+            if (k == 4) yield return new WaitForSeconds(0.4f);
+            if (k == 5) yield return new WaitForSeconds(0.5f);
         }
 
     }
@@ -208,7 +210,7 @@ public class Fighter : MonoBehaviour {
 
         currentMove = "idle";
         anim.SetInteger("MoveNumber", 0);
-        speed = 0;
+        //speed = 0;
         //Debug.Log("set_currentMove: " + currentMove);
 
     }
@@ -275,6 +277,7 @@ public class Fighter : MonoBehaviour {
             currentMove = nextMove;
             if (currentMove == "stepforward") anim.SetInteger("MoveNumber", 1);
             if (currentMove == "stepback") anim.SetInteger("MoveNumber", 2);
+            if (currentMove == "punch") anim.SetInteger("MoveNumber", 3);
             lastMove = currentMove;
             nextMove = "idle";
         }
